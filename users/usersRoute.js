@@ -1,5 +1,5 @@
 const router = require("express").Router()
-const {allUser, userById, newUser} = require("./usersController")
+const {allUser, userById, newUser, signUp} = require("./usersController")
 
 
 
@@ -7,7 +7,13 @@ router.get("/", allUser);
 
 router.get("/:id", userById);
 
-router.post("/users", newUser);
+router.post("/login", signUp);
+
+router.post ("/register", newUser)
+
+
+
+//router.patch("/edit", editUser)
 
 
 

@@ -40,9 +40,13 @@ const editPais= async (pais,name) =>{
 };
 
     
-const paisByDt = async (dt)=> {
-
-
+const paisByDt = async (dt, data)=> {
+    const query = `SELECT * FROM paises WHERE dt = "${dt}`
+    try{
+        return await pool.query(query, data)
+    }catch (error) {
+        return{"error": error.code}
+    }
 
 }
 const deletePais = async (id) =>{

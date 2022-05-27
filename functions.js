@@ -3,9 +3,5 @@ const findPaisById = (id, arr) => {
 };
 
 
-/*const findUserById = (id, arr) =>{
-    return arr.find((user) => user.id === id)
-};*/
 
-
-module.exports = { findPaisById}
+module.exports = { findPaisById }
