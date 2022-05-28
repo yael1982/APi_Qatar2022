@@ -48,9 +48,9 @@ const editPaisByName = async ( req, res, next)=>{
 const deletePaisById = async(req,res,next) =>{
     if(isNaN (+req.params.id)) return;
         const dbResponse = await deletePais(+req.params.id)
-    if (dbResponse  instanceof Error) return next(dbResponse);
+    if(dbResponse  instanceof Error) return next(dbResponse);
         dbResponse.affectedRows ? res.status(204).end() : next()
-       console.log(end)
+        
 };
 
 
