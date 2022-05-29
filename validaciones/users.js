@@ -1,6 +1,6 @@
 const {check, validationResult} = require("express-validator")
 
-const validatorUser=[
+const validatorNewUser=[
     check("name")
         .exists().withMessage("Name field is require")
         .trim()
@@ -33,4 +33,4 @@ const validatorUser=[
 
 
 
-module.exports = { validatorUser}
+module.exports = { validatorNewUser}

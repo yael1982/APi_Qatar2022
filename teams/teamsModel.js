@@ -5,7 +5,7 @@ const getAllCountries = async() => {
     try{
         return await pool.query(query)
     } catch (error) {
-        error.status = 500
+       
         error.message = error.code
         return error
     }
@@ -16,7 +16,9 @@ const getPaisById = async (id) =>{
     try{
         return await pool.query(query)
     } catch (error) {
-        return { "error": error.code}
+       
+        error.message = error.code
+        return error;
     }
 };
 
@@ -25,37 +27,42 @@ const getByGrupo = async (grupo) =>{
     const query = `SELECT * FROM paises WHERE grupo = "${grupo}"`;
     try{
         return await pool.query(query)
-    } catch (error){
-        return {"error": error.code}
+    } catch (error) {
+        error.message = error.code
+        return error;
     }
 };
-const editPais= async (pais,name) =>{
-    
-    const query = `UPDATE paises SET ? WHERE pais = "${pais}"`;
+const editPais= async (pais, name) =>{
+    const query = `UPDATE paises SET ? WHERE pais = "${pais}"`; 
     try{
         return await pool.query(query, name)
-    }catch (error) {
-        return{"error": error.code}
+    } catch (error) {
+        error.message = error.code
+        return error;
     }
 };
 
-    
-const paisByDt = async (dt, data)=> {
-    const query = `SELECT * FROM paises WHERE dt = "${dt}`
+
+const paisByDt = async (dt)=> {
+    const query = `SELECT * FROM paises WHERE dt LIKE "%${dt}%"`;
     try{
-        return await pool.query(query, data)
-    }catch (error) {
-        return{"error": error.code}
+        return await pool.query(query)
+    } catch (error) {
+        error.message = error.code
+        return error;
     }
 
-}
+};
+
 const deletePais = async (id) =>{
     const query = `DELETE FROM paises WHERE id = ${id}`;
     try{
         return await pool.query(query)
     } catch (error) {
-        return {"error": error.code}
+       
+        error.message = error.code
+        return error;
     }
 }
 
-module.exports = {getAllCountries, getPaisById, getByGrupo, editPais,paisByDt, deletePais};
+module.exports = {getAllCountries, getPaisById, getByGrupo, editPais, paisByDt, deletePais};

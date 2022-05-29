@@ -1,5 +1,6 @@
 const router = require("express").Router()
-const {allPaises, paisById, paisByGrupo, editPaisByName, deletePaisById, getPaisByDt} = require ("./teamsController")
+const {allPaises, paisById, paisByGrupo, editPaisByName, deletePaisById, getPaisByDt, getAllDt} = require ("./teamsController");
+
 
 
 
@@ -10,8 +11,8 @@ router.get("/:id", paisById);
 
 router.get("/equipo/:grupo", paisByGrupo);
 
-router.get("/dt/:dt", getPaisByDt)
-
+router.get("/dt/:dt", getPaisByDt);
+ 
 router.patch("/:pais", editPaisByName);
 
 router.delete("/:id", deletePaisById);

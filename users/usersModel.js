@@ -42,4 +42,6 @@ const loginUser = async (email) =>{
 
 
 
+
+
 module.exports = {getAllUsers, getUserById, loginUser, registerUser};

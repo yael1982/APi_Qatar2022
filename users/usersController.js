@@ -28,14 +28,18 @@ const newUser = async(req, res, next) => {
 const signUp= async(req, res, next)=>{
     const dbResponse = await loginUser(req.body.email)
     if(!dbResponse.length) return next();
-    if(await comparePass (req.body.password, dbResponse[0].password)){
+        if(await comparePass (req.body.password, dbResponse[0].password)){
         res.status(200).json({message:"OK"})
     } else{ 
         let error = new Error
         error.status = 401
         error.message = "Unauthorized"
         next(error)
-    }  
+    }   
+        console.log(dbResponse[0])
+        console.log(req.body.email)
+        console.log(req.body.password)
+    
 };
 
 
