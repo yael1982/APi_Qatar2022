@@ -17,7 +17,7 @@ const data = [{
     name: "Clementine Bauch",
     username: "Samantha",
     email: "Nathan@yesenia.net",
-    password: "789123",
+    password: "654321",
 },
 {
     id: 4,

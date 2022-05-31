@@ -31,7 +31,7 @@ server.use((req, res, next)=>{
 server.use((error, req, res, next) =>{
     if(!error.status) error.status = 500;
     res.status(error.status).json({status: error.status, message: error.message})
-})
+});
 
 server.listen(port, (err) => {
     err ? console.log(`Error: ${err}`) : console.log(`App corre en http://localhost:${port}`)

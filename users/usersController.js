@@ -19,10 +19,12 @@ const userById = async (req,res, next)=>{
 
 
 const newUser = async(req, res, next) => {
-    const pass = await hashPass(req.body.password)
-    const dbResponse = await registerUser({...req.body, password: pass }) 
-    dbResponse instanceof Error ? next(dbResponse) : res.status(201).json(`User ${req.body.name} created!`)
-    console.log(dbResponse)
+   /*const pass = await hashPass(req.body.password)
+   const dbResponse = await registerUser({...req.body, password: pass, image }) 
+   if(dbResponse instanceof Error) return next(dbResponse);*/
+   console.log(req.body)
+   console.log(req.body.file)
+   
 };
 
 const signUp= async(req, res, next)=>{
@@ -37,7 +39,6 @@ const signUp= async(req, res, next)=>{
         next(error)
     }   
         console.log(dbResponse[0])
-        console.log(req.body.email)
         console.log(req.body.password)
     
 };
