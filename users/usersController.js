@@ -19,16 +19,21 @@ const userById = async (req,res, next)=>{
 
 
 const newUser = async(req, res, next) => {
-   /*const pass = await hashPass(req.body.password)
-   const dbResponse = await registerUser({...req.body, password: pass, image }) 
-   if(dbResponse instanceof Error) return next(dbResponse);*/
-   console.log(req.body)
-   console.log(req.body.file)
+    console.log(req.body.file)
+     console.log(image)
+     res.sendStatus(200)
+    const image = `http://localhost:3030/${req.file.filename}`
+    const pass = await hashPass(req.body.password)
+    const dbResponse = await registerUser({...req.body, password: pass, image}) 
+    
+    dbResponse instanceof Error ? next(dbResponse) : res.status(201).json(`User ${req.body.name} created!!`)
+     
    
 };
 
 const signUp= async(req, res, next)=>{
     const dbResponse = await loginUser(req.body.email)
+    
     if(!dbResponse.length) return next();
         if(await comparePass (req.body.password, dbResponse[0].password)){
         res.status(200).json({message:"OK"})
@@ -38,8 +43,8 @@ const signUp= async(req, res, next)=>{
         error.message = "Unauthorized"
         next(error)
     }   
-        console.log(dbResponse[0])
-        console.log(req.body.password)
+        
+     
     
 };
 

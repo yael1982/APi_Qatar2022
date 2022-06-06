@@ -20,7 +20,6 @@ const paisById = async(req, res, next) => {
 };
 
 
-
 const getPaisByDt = async (req, res, next) =>{
   
     let dbResponse = null;
@@ -35,7 +34,7 @@ const getPaisByDt = async (req, res, next) =>{
      
 
 const paisByGrupo = async (req,res,next)=>{
-    if(req.params.grupo.length >1 ) {
+    if(!isNaN(+req.params.id)) {
         return res.status(400).json({message:"Grupo must be one letter from A to H"})
     } 
     const dbResponse = await getByGrupo(req.params.grupo) 

@@ -10,7 +10,7 @@ router.get("/:id", userById);
 
 router.post("/login", signUp);
 
-router.post ("/register", fileUpload.single("file"), validatorNewUser, newUser)
+router.post("/register", fileUpload.single("file"), validatorNewUser, newUser)
 
 
 

@@ -4,9 +4,9 @@ const express = require ("express")
 const server = express()
 const port = process.env.port || 8000
  
-
 server.use(express.json())
 server.use(express.urlencoded({extended: true}))
+server.use(express.static("static"));
 
 server.get("/", (req, res)=>{
    const front = `<h1>APi</h1>
@@ -16,7 +16,6 @@ server.get("/", (req, res)=>{
 
 
 server.use("/paises", require("./teams/teamsRouter"))
-
 
 server.use("/users", require("./users/usersRoute"))
 

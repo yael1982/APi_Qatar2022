@@ -8,6 +8,9 @@ const validatorNewUser=[
         .isLength({min:4, max:90}).withMessage("Name must be at least 4 characters long")
         .notEmpty().withMessage("Must complete field Name"),
         
+    check ("username")
+        .trim()
+        .isAlpha("es-ES", {ignore: " "}),
 
     check("email")
         .exists().withMessage("Email field is require")

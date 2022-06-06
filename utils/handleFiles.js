@@ -2,7 +2,7 @@ const multer = require("multer");
 
 const files = multer.diskStorage({
 destination: (req, file, callback)=> {
-    const pathFiles = `${__dirname}/../files`
+    const pathFiles = `${__dirname}/../static`
     callback(null, pathFiles)
 },
 filename: (req, file, callback)=>{
@@ -12,6 +12,7 @@ filename: (req, file, callback)=>{
 
 }
 });
-const fileUpload = multer ({ files })
+//middleware
+const fileUpload = multer ({ files });
 
 module.exports = fileUpload
