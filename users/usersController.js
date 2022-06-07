@@ -1,4 +1,4 @@
-//let users = require("../data/users");
+
 //const { findUserById} = require("../functions");
 const {getAllUsers, getUserById, loginUser, registerUser} = require("./usersModel");
 const {hashPass, comparePass} = require ("../utils/handlePassword")
@@ -18,17 +18,13 @@ const userById = async (req,res, next)=>{
 };
 
 
-const newUser = async(req, res, next) => {
-    console.log(req.body.file)
-     console.log(image)
-     res.sendStatus(200)
+const newUser = async(req, res, next) => { 
+        console.log(req.body.file)
     const image = `http://localhost:3030/${req.file.filename}`
     const pass = await hashPass(req.body.password)
     const dbResponse = await registerUser({...req.body, password: pass, image}) 
-    
-    dbResponse instanceof Error ? next(dbResponse) : res.status(201).json(`User ${req.body.name} created!!`)
      
-   
+    dbResponse instanceof Error ? next(dbResponse) : res.status(201).json(`User ${req.body.name} created!!`)
 };
 
 const signUp= async(req, res, next)=>{
