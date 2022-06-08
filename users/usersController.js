@@ -19,7 +19,7 @@ const userById = async (req,res, next)=>{
 
 
 const newUser = async(req, res, next) => { 
-        console.log(req.body.file)
+        console.log("hola")
     const image = `http://localhost:3030/${req.file.filename}`
     const pass = await hashPass(req.body.password)
     const dbResponse = await registerUser({...req.body, password: pass, image}) 
