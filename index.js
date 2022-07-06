@@ -3,10 +3,12 @@ require("./data/config")
 const express = require ("express")
 const server = express()
 const port = process.env.port || 8000
- 
+const cors = require ("cors");
+
 server.use(express.json())
 server.use(express.urlencoded({extended: true}))
 server.use(express.static("static"));
+server.use(cors());
 
 server.get("/", (req, res)=>{
    const front = `<h1>APi</h1>
