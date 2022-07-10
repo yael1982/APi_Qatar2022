@@ -5,8 +5,8 @@ const server = express()
 const port = process.env.port || 8000
 const cors = require ("cors");
 
-server.use(express.json())
-server.use(express.urlencoded({extended: true}))
+server.use(express.json());
+server.use(express.urlencoded({extended: true}));
 server.use(express.static("static"));
 server.use(cors());
 
@@ -20,7 +20,6 @@ server.get("/", (req, res)=>{
 server.use("/paises", require("./teams/teamsRouter"))
 
 server.use("/users", require("./users/usersRoute"))
-
 
 
 server.use((req, res, next)=>{

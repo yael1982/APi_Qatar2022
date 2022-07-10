@@ -20,8 +20,8 @@ const userById = async (req,res, next)=>{
 
 
 const newUser = async(req, res, next) => { 
-        console.log("hola")
-    const image = `http://localhost:3030/${req.file.filename}`
+        
+    const image = `http://localhost:3030/${req.file}`;
     const pass = await hashPass(req.body.password);
     const dbResponse = await registerUser({...req.body, password: pass, image}); 
      if(dbResponse instanceof Error) return next(dbResponse);
@@ -33,7 +33,9 @@ const newUser = async(req, res, next) => {
         token: await tokenSign (user, "1h"),
         user,
      };
-       res.status(201).json({user: req.body.name, Token_Info: tokenData});
+       res
+       .status(201)
+       .json({user: req.body.name, Token_Info: tokenData});
 };
 
 const signUp= async(req, res, next)=>{
@@ -48,7 +50,7 @@ const signUp= async(req, res, next)=>{
             image: dbResponse[0].image,
           };
         const tokenData ={
-            token: await tokenSign(user, "30s"),
+            token: await tokenSign(user, "1h"),
             user,
         };
         res
